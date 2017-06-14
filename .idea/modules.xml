@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/UILog.iml" filepath="$PROJECT_DIR$/UILog.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/uiloglib/uiloglib.iml" filepath="$PROJECT_DIR$/uiloglib/uiloglib.iml" />
     </modules>
   </component>
 </project>
