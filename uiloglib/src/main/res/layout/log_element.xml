@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/logMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="121212 12222 Chat Presenter : stuck screen error"
+        android:textStyle="bold|italic"
+        android:textSize="15sp"
+        android:textColor="#259a10"/>
+
+</LinearLayout>
