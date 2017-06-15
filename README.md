@@ -1,6 +1,8 @@
 # UILog
 I want to get the Log reports from my test devices, so I made this simple library which will emulate the adb Log class in Android UI , so testers can share there logs and debugging can become easier by tracing the logs.
 
+![Alt text](https://s22.postimg.org/8qbslmkwh/device-2017-06-16-010434.png "log screenshot in action")
+
 The wy it works is like this:
 
 1) Add this into your top level `build.gradle` file
