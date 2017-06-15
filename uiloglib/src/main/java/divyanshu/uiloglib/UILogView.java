@@ -8,11 +8,17 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 /**
  * Created by divyanshunegi on 6/15/17.
  * Project : UILog
  */
-public class UILogView extends LinearLayout {
+public class UILogView extends LinearLayout implements PropertyChangeListener {
+
+    private ListView lv;
+    private ListAdapter adapter;
 
     public UILogView(Context context) {
         super(context);
@@ -30,26 +36,20 @@ public class UILogView extends LinearLayout {
     }
 
     private void init(Context context,AttributeSet attr){
+        UILog.init().addChangeListener(this);
         LinearLayout.LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         View view = inflate(context, R.layout.log_layout, null);
         view.setLayoutParams(params);
-        ListView lv = (ListView) view.findViewById(R.id.logList);
-        ListAdapter adapter = new ListAdapter(context,R.layout.log_element,UILog.init().getLogs());
+        lv = (ListView) view.findViewById(R.id.logList);
+        adapter = new ListAdapter(context,R.layout.log_element,UILog.init().getLogs());
         lv.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
         addView(view);
-
-//        View v; // Creating an instance for View Object
-//        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//        v = inflater.inflate(R.layout.log_layout, null);
-
-//            LayoutInflater mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//            mInflater.inflate(R.layout.log_layout, this, true);
-//        ListView lv = (ListView) findViewById(R.id.logList);
-//        ListAdapter adapter = new ListAdapter(context,R.layout.log_element,UILog.init().getLogs());
-//        lv.setAdapter(adapter);
-//        adapter.notifyDataSetChanged();
     }
 
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("Property Changed");
+        this.adapter.notifyDataSetChanged();
+    }
 }

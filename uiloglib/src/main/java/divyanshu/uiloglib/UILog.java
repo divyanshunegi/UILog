@@ -1,6 +1,9 @@
 package divyanshu.uiloglib;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by divyanshunegi on 6/15/17.
@@ -9,6 +12,7 @@ import java.util.ArrayList;
 public class UILog {
 
     private ArrayList<LogMessage> logMessagelist;
+    private List<PropertyChangeListener> listener = new ArrayList<PropertyChangeListener>();
     private static UILog INSTANCE;
 
     public static UILog init(){
@@ -37,6 +41,7 @@ public class UILog {
                 .logTimestamp(System.currentTimeMillis()+"")
                 .logType(LogType.VERBOSE)
                 .build());
+        notifyListeners(this, "", "", "");
     }
 
     /**
@@ -51,6 +56,7 @@ public class UILog {
                 .logTimestamp(System.currentTimeMillis()+"")
                 .logType(LogType.ERROR)
                 .build());
+        notifyListeners(this, "", "", "");
     }
 
     /**
@@ -65,6 +71,7 @@ public class UILog {
                 .logTimestamp(System.currentTimeMillis()+"")
                 .logType(LogType.WARNING)
                 .build());
+        notifyListeners(this, "", "", "");
     }
 
     /**
@@ -79,6 +86,7 @@ public class UILog {
                 .logTimestamp(System.currentTimeMillis()+"")
                 .logType(LogType.DEBUG)
                 .build());
+        notifyListeners(this, "", "", "");
     }
 
     /**
@@ -93,6 +101,18 @@ public class UILog {
                 .logTimestamp(System.currentTimeMillis()+"")
                 .logType(LogType.INFO)
                 .build());
+        notifyListeners(this, "", "", "");
+    }
+
+
+    private void notifyListeners(Object object, String property, String oldValue, String newValue) {
+        for (PropertyChangeListener name : listener) {
+            name.propertyChange(new PropertyChangeEvent(this, property, oldValue, newValue));
+        }
+    }
+
+    public void addChangeListener(PropertyChangeListener newListener) {
+        listener.add(newListener);
     }
 
 
