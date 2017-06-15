@@ -7,6 +7,7 @@
 
     <divyanshu.uiloglib.UILogView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></divyanshu.uiloglib.UILogView>
+        android:layout_height="match_parent">
+    </divyanshu.uiloglib.UILogView>
 
 </RelativeLayout>
